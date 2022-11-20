@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2022 a las 00:07:51
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 20-11-2022 a las 19:19:04
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,7 +60,9 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id_clientes`, `nombre`, `usuario`, `telefono`, `password`) VALUES
 (9, 'hola', 'holar', '2226197', '456'),
-(10, 'yisus', 'root', '7914726' , '123');
+(10, 'yisus', 'root', '7914726', '123'),
+(11, 'Cristian', 'Cristian123', '12345678', 'cristian'),
+(12, 'pruebaFunc', 'prueba', '12345678', 'prueba');
 
 -- --------------------------------------------------------
 
@@ -72,8 +74,18 @@ CREATE TABLE `pqrs` (
   `id_pqrs` int(11) NOT NULL,
   `id_clientes` int(11) NOT NULL,
   `gmail` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `peticion` text COLLATE utf8_spanish_ci NOT NULL
+  `peticion` text COLLATE utf8_spanish_ci NOT NULL,
+  `Estado` varchar(20) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'No Contestado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pqrs`
+--
+
+INSERT INTO `pqrs` (`id_pqrs`, `id_clientes`, `gmail`, `peticion`, `Estado`) VALUES
+(17, 9, 'cristian@gmail.comhnbgfvda', 'fgd sdg dgvbgdbvfd', 'Contestado'),
+(18, 10, 'cristian@gmail.com', 'hola mundo', 'Contestado'),
+(31, 11, 'cristian@gmail.com', 'cwdscsdcdscdsc', 'Contestado');
 
 --
 -- Índices para tablas volcadas
@@ -112,13 +124,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_clientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_clientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `pqrs`
 --
 ALTER TABLE `pqrs`
-  MODIFY `id_pqrs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_pqrs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Restricciones para tablas volcadas

@@ -32,7 +32,6 @@ $row = $resul->fetch_assoc();
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../Estilos/inicios.css">
-    <script src="include/CambioEstado.js"></script>
 
     <title>Inicio</title>
 </head>
@@ -120,15 +119,17 @@ background:rgb(65, 196, 196);
             <tbody>
                 <?php
                 $consulta = "SELECT * FROM pqrs";
+                $consulta2 = "SELECT nombre FROM clientes";
                 $resultado = mysqli_query($db, $consulta);
-                while ($row = mysqli_fetch_array($resultado)) {
+                $resultado2 = mysqli_query($db, $consulta2);
+                while ($row = mysqli_fetch_array($resultado) and $row2 = mysqli_fetch_array($resultado2) ) {
                 ?>
                 <tr>
                     <td>
                         <?php echo $row['id_pqrs'] ?>
                     </td>
                     <td>
-                        <?php echo $row['id_clientes'] ?> <a name="ver" href="inicio.php?id=<?php echo $row['id_clientes'] ?>"
+                        <?php echo $row2['nombre'] ?> <a name="ver" href="inicio.php?id=<?php echo $row['id_clientes'] ?>"
                             class="btn btn-primary pl-2">ver</a>
                     </td>
                     <td>
@@ -144,7 +145,7 @@ background:rgb(65, 196, 196);
                     </td>
 
                     <td>
-                        <button type="button" class="btn btn-primary">Contestar</button>
+                        <a href="Contestar.php?id=<?php echo $row['id_pqrs'] ?>" class="btn btn-primary">Contestar</a>
                         <a href="BorrarP.php?id=<?php echo $row['id_pqrs'] ?>" class="btn btn-danger">Eliminar</a></th>
                     </tr>
                 <?php
